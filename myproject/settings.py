@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-u9#cy-d)70j&t#ss*010ehfqv1!eo38zs2a%k-qlin8%se92ex
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-     
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -112,7 +113,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'myapp/static',  # Corrected to the correct static directory path
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/myapp/media/'
 MEDIA_ROOT = BASE_DIR / 'myapp/media'  # Make sure the directory exists
