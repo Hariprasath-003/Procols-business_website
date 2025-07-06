@@ -1,0 +1,529 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Procols</title>
+
+  <link rel="icon" href="{% static 'img/icon.png' %}" type="img/png">
+  <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+ 
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Major Mono Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <link href="{% static "css/main4.css"%}" rel="stylesheet">
+  <style>
+    .slide-in-loop {
+      animation: slideInUp 2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes slideInUp {
+      0% {
+        transform: translateX(20px);
+        opacity: 1;
+      }
+      50% {
+        transform: translateX(10px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(20px);
+        opacity: 1;
+      }
+    }
+    .floating-button {
+      position: fixed;
+      display: flex;
+  align-items: center;
+  justify-content: center;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.3); /* Transparent background */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+      z-index: 99999;
+    }
+
+    .floating-button:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    #mainNavbar {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    #mainNavbar canvas {
+      position: absolute !important;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: -1 !important;
+      pointer-events: none;
+    }
+    #hero {
+      position: relative;
+      overflow: hidden;
+      height: 100vh; /* Or whatever height fits your layout */
+      color: white;
+      z-index: 1;
+    }
+    
+    #heroVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    @import url('https://fonts.googleapis.com/css?family=Exo:100');
+
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+.infinite-scroll-bg {
+  background-image: 
+    linear-gradient(90deg, rgba(120, 8, 208, 0.15) 3px, transparent 3px),
+    linear-gradient(rgba(120, 8, 208, 0.15) 3px, transparent 3px);
+  background-size: 50px 50px;
+  animation: bg-scrolling-reverse 0.92s linear infinite;
+}
+
+    
+    
+  </style>
+</head>
+<body>
+  <a href="#hero" class="floating-button">
+  <i  class="bi bi-chevron-up"></i>
+  </a>
+  
+  
+  
+  <main class="main">
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top navbar-modern navbar-transparent">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img class="Procols-Logo me-2" src="{% static 'img/WhatsApp_Image_2025-04-16_at_7.09.39_PM-removebg-preview.svg' %}" alt="Procols Logo" height="40">
+          <span id="navBrand">Procols</span>
+        </a>
+    
+        <!-- Toggler button for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <input id="checkbox" type="checkbox">
+          <label class="toggle" for="checkbox">
+              <div id="bar1" class="bars"></div>
+              <div id="bar2" class="bars"></div>
+              <div id="bar3" class="bars"></div>
+          </label>
+        </button>
+    
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="navbarNav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#hero">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services-2">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#team">Reviews</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacts">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <!-- 🎥 Video background -->
+      <video autoplay muted loop playsinline id="heroVideo">
+        <source src="{% static 'img/vido.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    
+      <!-- 💬 Overlay content -->
+      <div class="container d-flex flex-column align-items-center" style="top:-15%; ">
+        <h2>College UG Project</h2>
+        <p>A to Z Fully Provided (Mini and Final Year Project) On Affordable Price</p>
+        <div class="d-flex mt-4">
+          <a href="/register" ><button href="/register" class="button" style="--clr: #7808d0">
+            <span class="button__icon-wrapper">
+              <svg
+                viewBox="0 0 14 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="button__icon-svg"
+                width="10"
+              >
+                <path
+                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+          
+              <svg
+                viewBox="0 0 14 15"
+                fill="none"
+                width="10"
+                xmlns="http://www.w3.org/2000/svg"
+                class="button__icon-svg button__icon-svg--copy"
+              >
+                <path
+                  d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </span>
+            FREE CONSULTATION
+          </button></a>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero Section -->
+    {% if messages %}
+      <script>
+      {% for message in messages %}
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: '{{ message }}',
+          confirmButtonColor: '#800080',
+          timer: 90000
+        });
+      {% endfor %}
+    </script>
+    {% endif %}
+
+
+    <!-- Services Section -->
+    <section id="services" class="services section infinite-scroll-bg">
+      
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up" class="service-item animate-left">
+        <h2 style="color: white;">PROJECTS</h2>
+        <p style="color: white;">Featured PROJECTS<br></p>
+        <p class="slide-in-loop" style="font-size:1.2rem;">
+          -> We are Specially give Computer Science project with code sources
+        </p>
+        <p style="font-size:1.2rem;" class="slide-in-loop">-> All Department project are given a full documentation with Clear Explanation</p>
+        <p style="font-size:1.2rem;" class="slide-in-loop">-> We are supporting till the project End date</p>
+      </div><!-- End Section Title --><br>
+        
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-5">
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static "img/web.jpeg" %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-browser-chrome"></i>
+                </div>
+                
+                  <h3>Web Application Projects</h3>
+                </a>
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static "img/cyber.jpeg" %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                
+                  <h3>Cyber Security Projects</h3>
+                </a>
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static "img/ml.jpeg" %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-lightbulb"></i>
+                </div>
+                
+                  <h3>ML Projects</h3>
+                </a>
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static "img/ai.jpeg" %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-robot"></i>
+                </div>
+                
+                  <h3>AI Projects</h3>
+                </a>
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static "img/gamin.png" %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-controller"></i>
+                </div>
+                
+                  <h3>Gaming Projects</h3>
+                </a>
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="service-item">
+              <div class="img">
+                <img src="{% static "img/network.jpeg" %}" class="img-fluid" alt="">
+              </div>
+              <div class="details position-relative">
+                <div class="icon">
+                  <i class="bi bi-hdd-network"></i>
+                </div>
+                
+                  <h3>Networking Projects</h3>
+                </a>
+                <p></p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services Section -->
+    <!-- Services 2 Section -->
+    <section id="services-2" class="services-2 section infinite-scroll-bg" class="member animate-right">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>CHECK OUR SERVICES</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-1-circle"></i>
+              <div>
+                <h4 class="title"> Topic Selection</h4>
+                <p class="description">Offer you the best topic with explanation,till topic seleted.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-2-circle"></i>
+              <div>
+                <h4 class="title"> Topic Comfirmation</h4>
+                <p class="description">After the topic confirmed, we provide sample source code report and PPT Review .</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-3-circle"></i>
+              <div>
+                <h4 class="title"> Document Format</h4>
+                <p class="description">Providing the document according to your college format.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-4-circle"></i>
+              <div>
+                <h4 class="title"> Explanation</h4>
+                <p class="description">During the document process we explain everything detailed about the project.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-5-circle"></i>
+              <div>
+                <h4 class="title"> Viva Assistance</h4>
+                <p class="description">We provide best Viva questions guideness everything you ask. </p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-item d-flex position-relative h-100">
+              <i class="bi bi-6-circle"></i>
+              <div>
+                <h4 class="title"> Project Report In Hand</h4>
+                <p class="description">Finally we provide Hard or Soft copy binding (silver/gold) according to your college preferences.</p>
+              </div>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Services 2 Section -->
+
+    <!-- Testimonials Section -->
+
+    <!-- Team Section -->
+    <section id="team" class="team section infinite-scroll-bg">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up" class="section-title animate-top">
+        <h2>REVIEWS</h2>
+        <p>CHECK OUR REVIEWS</p>
+      </div><!-- End Section Title -->
+
+      <div class="container1">
+
+        <a href="/reviews" >
+          <button type="button" class="btn">
+          <strong>STUDENTS REVIEWS</strong>
+          <div id="container-stars">
+            <div id="stars"></div>
+          </div>
+        
+          <div id="glow">
+            <div class="circle"></div>
+            <div class="circle"></div>
+          </div>
+        </button></a>  
+        </div>
+
+      </div>
+    </section><!-- /Team Section -->
+  </main>
+
+    
+    {% include "contact.html" %}
+
+    {% include "about.html" %}
+    
+    {% include "footer.html" %}
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static "js/main1.js" %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+
+    
+    
+<script>
+  VANTA.WAVES({
+    el: "#mainNavbar",  // ✅ This matches your nav ID
+    mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  shininess: 40.00,
+  waveSpeed: 0.65,
+  zoom: 1.39
+  });
+
+  VANTA.WAVES({
+    el: ".bgg",  // ✅ This matches your nav ID
+    mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  shininess: 40.00,
+  waveSpeed: 0.65,
+  zoom: 1.39
+  });
+
+  </script>
+
+
+
+  </body>
+</html>
+
+    
+
+
